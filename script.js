@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'Chinese', id: 'chn' },
         { name: 'English', id: 'eng' },
         { name: 'Mathematics (Core)', id: 'mat' },
-        { name: 'Chemistry', id: 'chm' },
-        { name: 'Biology', id: 'bio' }
+        { name: 'Elective 1', id: 'chm' },
+        { name: 'Elective 2', id: 'bio' }
     ];
 
     const sliderValues = [1, 2, 3, 4, 5.5, 7, 8.5];
@@ -34,10 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const label = document.createElement('label');
             label.setAttribute('for', subject.id);
             label.classList.add('form-label');
-            label.textContent = `${subject.name}: `;
+            label.textContent = `${subject.name} (Weight: ${scaleFactors[subject.id]}): `;
 
             const valueSpan = document.createElement('span');
             valueSpan.id = `${subject.id}-value`;
+            // valueSpan.textContent = sliderDisplayValues[3];
             valueSpan.textContent = sliderDisplayValues[3];
 
             label.appendChild(valueSpan);
