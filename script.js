@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const slidersContainer = document.getElementById('sliders-container');
     const totalScoreEl = document.getElementById('total-score');
     const facultyScoreEl = document.getElementById('faculty-score');
+    const weightingsInput = document.getElementById('weightings');
+    const editButton = document.getElementById('edit-button');
+    const resetButton = document.getElementById('reset-button');
 
     const subjects = [
         { name: 'Chinese', id: 'chn' },
@@ -18,13 +21,29 @@ document.addEventListener('DOMContentLoaded', () => {
     let facultyScore = 0;
     let scaleFactors;
 
-    fetch('scale.json')
-        .then(response => response.json())
-        .then(data => {
-            scaleFactors = data.polyu;
-            initializeSliders();
-            updateScores();
+    function updateScaleFactors() {
+        const weightings = weightingsInput.value;
+        const parts = weightings.match(/.{1,2}/g).map(Number);
+        scaleFactors = {};
+        subjects.forEach((subject, index) => {
+            scaleFactors[subject.id] = parts[index];
         });
+    }
+
+    function updateSliderLabels() {
+        subjects.forEach(subject => {
+            const label = document.querySelector(`label[for="${subject.id}"]`);
+            if (label) {
+                const valueSpan = document.getElementById(`${subject.id}-value`);
+                label.textContent = `${subject.name} (Weight: ${scaleFactors[subject.id]}): `;
+                label.appendChild(valueSpan);
+            }
+        });
+    }
+
+    updateScaleFactors();
+    initializeSliders();
+    updateScores();
 
     function initializeSliders() {
         subjects.forEach(subject => {
@@ -88,4 +107,47 @@ document.addEventListener('DOMContentLoaded', () => {
         totalScoreEl.textContent = totalScore;
         facultyScoreEl.textContent = facultyScore;
     }
+
+    editButton.addEventListener('click', () => {
+        if (weightingsInput.disabled) {
+            weightingsInput.disabled = false;
+            editButton.textContent = 'Save';
+        } else {
+            const weightings = weightingsInput.value;
+            if (weightings.length !== 10) {
+                alert('Invalid settings code!');
+                return;
+            }
+
+            const parts = weightings.match(/.{1,2}/g).map(Number);
+            const invalid = parts.some((part, index) => {
+                if (index < 3) {
+                    return ![7, 10].includes(part);
+                } else {
+                    return ![5, 7, 10].includes(part);
+                }
+            });
+
+            if (invalid) {
+                alert('Invalid settings code!');
+                return;
+            }
+
+            updateScaleFactors();
+            updateSliderLabels();
+            updateScores();
+
+            weightingsInput.disabled = true;
+            editButton.textContent = 'Edit';
+        }
+    });
+
+    resetButton.addEventListener('click', () => {
+        weightingsInput.value = '0710101010';
+        updateScaleFactors();
+        updateSliderLabels();
+        updateScores();
+        weightingsInput.disabled = true;
+        editButton.textContent = 'Edit';
+    });
 });

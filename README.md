@@ -1,6 +1,7 @@
 # DSE Score Calculator
 
 A simple and easy-to-use DSE score calculator for Hong Kong students.
+Feel free to fork it and modify it to suit your needs.
 
 ## Demo
 
@@ -17,6 +18,12 @@ You can try the demo at [dsescore.opentechhk.com](http://dsescore.opentechhk.com
 
 ## Version History
 
+*   **v0.2**:
+    *   Added a "weightings" textbox to allow users to customize subject weightings.
+    *   Added "Edit/Save" and "Reset" buttons for the weightings textbox.
+    *   The calculator now reads weighting values from the input field.
+    *   Added a GitHub repository badge.
+    *   Increased the size of the information icon.
 *   **v0.1**: Initial release.
 
 ## Future Improvements

@@ -34,7 +34,7 @@
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-link position-absolute top-0 end-0 m-2" data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop">
-                    <i class="fa-solid fa-circle-question fa-2x"></i>
+                    <i class="fa-solid fa-circle-question"></i>
                 </button>
                 <h5 class="card-title">Estimate your target grade and score</h5>
                 <h2 class="card-title">DSE Total Score: <span id="total-score">25</span>
@@ -44,54 +44,6 @@
             </div>
         </div>
 
-        <!-- Weighting Settings -->
-        <div class="accordion" id="accordionFlushExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        Weighting Settings
-                    </button>
-                </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">
-                        <h3>
-                            Magic code to set the weighting of 5 subjects
-                        </h3>
-                        <p>
-                            Most universities in Hong Kong counts the best 5 subjects. However, there is no way to
-                            maintain all subject weightings, this setting code enables quick setting of weighting for
-                            each subject. Default setting is Engineering subjects that has the weighting as:
-                        <ul>
-                            <li>
-                                Chinese Language: 07
-                            </li>
-                            <li>
-                                English Language: 10
-                            </li>
-                            <li>
-                                Mathematics (Core): 10
-                            </li>
-                            <li>
-                                Elective Subject 1 (Physics, Chemistry, Biology...): 10
-                            </li>
-                            <li>
-                                Elective Subject 2 (Physics, Chemistry, Biology...): 10
-                            </li>
-                        </ul>
-                        The setting code is the subject weight in order: 0710101010
-                        </p>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="weightings" value="0710101010" maxlength="10"
-                                disabled>
-                            <button class="btn btn-outline-secondary" type="button" id="edit-button">Edit</button>
-                            <button class="btn btn-outline-secondary" type="button" id="reset-button">Reset</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
         <!-- Modal -->
@@ -126,7 +78,7 @@
                                 <div class="alert alert-primary d-flex align-items-center" role="alert">
                                     <div>
                                         <i class="fa-solid fa-exclamation-circle" aria-hidden="true"></i>
-                                        Default calculation is based on Engineering subjects weightings.
+                                        Current calculation is based on Engineering subjects weightings.
                                     </div>
                                 </div>
                                 <a href="https://www.polyu.edu.hk/aradm/jupas/2025_JS3223_SW.pdf"
@@ -158,13 +110,7 @@
             crossorigin="anonymous"></script>
         <script src="script.js"></script>
         <p />
-        <h6 class="text-center">version 0.2 <br>A gift to all HKDSE students, Good Luck! 
-            <br /> 2025 Sep
-            <br />
-            <a href="https://github.com/irvinyip/dsecal" target="_blank">
-                <span class="badge bg-dark">GitHub</span>
-            </a>
-        </h6>
+        <h6 class="text-center">version 0.1 <br>A gift to all HKDSE students, Good Luck! <br/> 2025 Sep</h6>
     </div>
 </body>
 
